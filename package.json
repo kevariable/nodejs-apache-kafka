@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "consumer": "nodemon src/consumer.js",
-    "producer": "nodemon src/consumer.js"
+    "consumer": "nodemon src/consumer.ts",
+    "producer": "nodemon src/producer.ts"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +13,9 @@
     "kafkajs": "^2.2.4",
     "nodemon": "^3.1.3"
   },
-  "type": "module"
+  "devDependencies": {
+    "@types/node": "^20.14.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
 }
