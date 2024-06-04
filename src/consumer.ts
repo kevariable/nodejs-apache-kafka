@@ -1,10 +1,11 @@
-import { Consumer, ConsumerSubscribeTopics, Kafka, EachMessagePayload } from 'kafkajs'
+import { Consumer, ConsumerSubscribeTopics, EachMessagePayload } from 'kafkajs'
+import KafkaClient from './client'
 
 export default class LogisticConsumer {
   private kafkaConsumer: Consumer
 
   public constructor() {
-    this.kafkaConsumer = this.createKafkaConsumer()
+    this.kafkaConsumer = KafkaClient.createConsumer()
   }
 
   public async startConsumer(): Promise<void> {
@@ -27,18 +28,6 @@ export default class LogisticConsumer {
     } catch (error) {
       console.log('Error: ', error)
     }
-  }
-
-  public async shutdown(): Promise<void> {
-    await this.kafkaConsumer.disconnect()
-  }
-
-  private createKafkaConsumer(): Consumer {
-    const kafka = new Kafka({ 
-      brokers: ['kafka:9092'],
-    })
-    const consumer = kafka.consumer({ groupId: 'logistic' })
-    return consumer
   }
 }
 

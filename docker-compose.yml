@@ -1,4 +1,15 @@
 services:
+  producer:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: ["npm", "run", "producer"]
+    depends_on:
+      - kafka
+
   consumer1:
     build:
       context: .
