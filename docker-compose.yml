@@ -1,4 +1,22 @@
 services:
+  consumer1:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: ["npm", "run", "consumer"]
+
+  consumer2:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: [ "npm", "run", "consumer" ]
+
   kafka:
     image: bitnami/kafka:latest
     volumes:
