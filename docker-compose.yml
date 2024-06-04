@@ -7,6 +7,8 @@ services:
       - .:/app
       - /app/node_modules
     command: ["npm", "run", "consumer"]
+    depends_on:
+      - kafka
 
   consumer2:
     build:
@@ -16,6 +18,8 @@ services:
       - .:/app
       - /app/node_modules
     command: [ "npm", "run", "consumer" ]
+    depends_on:
+      - kafka
 
   kafka:
     image: bitnami/kafka:latest
