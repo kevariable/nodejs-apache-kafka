@@ -14,8 +14,7 @@ export default class KafkaClient {
     }
 
     static createConsumer(): Consumer {
-        const consumer = this.create().consumer({ groupId: 'logistic' })
-        return consumer
+        return this.create().consumer({ groupId: 'logistic' })
     }
 
     static createProducer(): Producer {
